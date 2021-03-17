@@ -10,7 +10,6 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "detox-cli": "^18.0.0",
     "react": "16.13.1",
     "react-native": "npm:react-native-tvos@0.63.4-0"
   },

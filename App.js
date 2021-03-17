@@ -7,17 +7,13 @@
  */
 
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text, ScrollView } from 'react-native';
+import { SafeAreaView, StyleSheet, Text } from 'react-native';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const App: () => React$Node = () => {
   return (
     <SafeAreaView style={styles.container}>
-      {/*<ScrollView*/}
-      {/*  contentInsetAdjustmentBehavior="automatic"*/}
-      {/*  style={styles.scrollView}*/}
-      {/*/>*/}
       <Text style={styles.text}>Hello world</Text>
     </SafeAreaView>
   );
