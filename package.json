@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "tvos": "react-native run-ios --simulator \"Apple TV\" --scheme \"TVapp-tvOS\"",
+    "tvos": "react-native run-ios --simulator \"Apple TV\" --scheme \"TestApp-tvOS\"",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint ."
