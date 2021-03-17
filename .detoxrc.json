@@ -1,9 +1,17 @@
 {
+  "testRunner": "jest",
+  "runnerConfig": "e2e/config.json",
   "devices": {
     "emulator": {
       "type": "android.emulator",
       "device": {
         "avdName": "TestAndroidTV"
+      }
+    },
+    "simulator": {
+      "type": "ios.simulator",
+      "device": {
+        "type": "Apple TV"
       }
     }
   },
@@ -17,6 +25,10 @@
       "type": "android.apk",
       "binaryPath": "android/app/build/outputs/apk/release/app-release.apk",
       "build": "cd android && ./gradlew assembleRelease assembleAndroidTest -DtestBuildType=release && cd .."
+    },
+    "ios": {
+      "type": "ios.app",
+      "binaryPath": "SPECIFY_PATH_TO_YOUR_APP_BINARY"
     }
   },
   "configurations": {
@@ -27,6 +39,10 @@
     "android.emu.release": {
       "device": "emulator",
       "app": "android.release"
+    },
+    "ios": {
+      "device": "simulator",
+      "app": "ios"
     }
   }
 }

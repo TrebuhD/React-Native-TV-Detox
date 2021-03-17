@@ -14,7 +14,9 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 const App: () => React$Node = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>Hello world</Text>
+      <Text testID="stepOne" style={styles.text}>
+        Hello world
+      </Text>
     </SafeAreaView>
   );
 };
