@@ -1,16 +1,21 @@
 import React, { memo, useState } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+
+import { Text } from './Text';
 
 interface Props {
   title: string;
   onPress: () => void;
   shouldFocus?: boolean;
+  testID?: string;
 }
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 12,
     margin: 16,
     backgroundColor: Colors.light,
     borderRadius: 10,
@@ -21,6 +26,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'gray',
     borderColor: 'lightblue',
   },
+  text: {
+    color: 'black',
+  },
   focusedText: {
     fontWeight: 'bold',
   },
@@ -30,6 +38,7 @@ export const Button = memo(function Button({
   title,
   onPress,
   shouldFocus,
+  testID,
 }: Props) {
   const [focused, setFocused] = useState(false);
 
@@ -41,9 +50,12 @@ export const Button = memo(function Button({
       hasTVPreferredFocus={shouldFocus}
       onFocus={() => setFocused(true)}
       onBlur={() => setFocused(false)}
+      testID={testID}
     >
       <View>
-        <Text style={focused && styles.focusedText}>{title}</Text>
+        <Text style={[styles.text, focused && styles.focusedText]}>
+          {title}
+        </Text>
       </View>
     </TouchableOpacity>
   );

@@ -1,13 +1,19 @@
 import React, { memo } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+
 import { Button } from './Button';
+import { Text, TextType } from './Text';
 
 interface Props {
   navigateToHome: () => void;
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    flex: 1,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
 });
 
 export const ListExample = memo(function ListExample({
@@ -15,8 +21,15 @@ export const ListExample = memo(function ListExample({
 }: Props) {
   return (
     <View style={styles.container}>
-      <Text>List</Text>
-      <Button shouldFocus title="Home" onPress={navigateToHome} />
+      <Text testID="page_title" type={TextType.BIG}>
+        List
+      </Text>
+      <Button
+        testID="button_home"
+        shouldFocus
+        title="Home"
+        onPress={navigateToHome}
+      />
     </View>
   );
 });

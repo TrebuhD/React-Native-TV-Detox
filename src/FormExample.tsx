@@ -1,14 +1,19 @@
 import React, { memo } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { Button } from './Button';
+import { Text, TextType } from './Text';
 
 interface Props {
   navigateToHome: () => void;
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    flex: 1,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
 });
 
 export const FormExample = memo(function FormExample({
@@ -16,7 +21,7 @@ export const FormExample = memo(function FormExample({
 }: Props) {
   return (
     <View style={styles.container}>
-      <Text>Form</Text>
+      <Text type={TextType.BIG}>Form</Text>
       <Button shouldFocus title="Home" onPress={navigateToHome} />
     </View>
   );

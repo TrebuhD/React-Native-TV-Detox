@@ -1,40 +1,43 @@
 import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet, Text } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-import { ROUTE } from './src/constants';
 import { Button } from './src/Button';
+import { ROUTE } from './src/constants';
 import { FormExample } from './src/FormExample';
 import { ListExample } from './src/ListExample';
+import { Text, TextType } from './src/Text';
 
 const App = () => {
-  const [selectedView, setSelectedView] = useState<ROUTE>(ROUTE.HOME);
+  const [view, setView] = useState<ROUTE>(ROUTE.HOME);
 
   return (
     <SafeAreaView style={styles.container}>
-      {selectedView === ROUTE.HOME && (
+      {view === ROUTE.HOME && (
         <>
-          <Text testID="stepOne" style={styles.text}>
+          <Text type={TextType.BIG} testID="helloText">
             Hello world!
           </Text>
           <Button
+            testID="button_list"
             shouldFocus
             title="Go to List example"
-            onPress={() => setSelectedView(ROUTE.LIST)}
+            onPress={() => setView(ROUTE.LIST)}
           />
           <Button
-            title={'Go to Form example'}
-            onPress={() => setSelectedView(ROUTE.FORM)}
+            testID="button_form"
+            title="Go to Form example"
+            onPress={() => setView(ROUTE.FORM)}
           />
         </>
       )}
 
-      {selectedView === ROUTE.LIST && (
-        <ListExample navigateToHome={() => setSelectedView(ROUTE.HOME)} />
+      {view === ROUTE.LIST && (
+        <ListExample navigateToHome={() => setView(ROUTE.HOME)} />
       )}
 
-      {selectedView === ROUTE.FORM && (
-        <FormExample navigateToHome={() => setSelectedView(ROUTE.HOME)} />
+      {view === ROUTE.FORM && (
+        <FormExample navigateToHome={() => setView(ROUTE.HOME)} />
       )}
     </SafeAreaView>
   );
@@ -47,13 +50,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  text: {
-    fontSize: 48,
-    color: 'white',
-  },
   button: {
     margin: 16,
   },
 });
 
-export default App;
+export default React.memo(App);
