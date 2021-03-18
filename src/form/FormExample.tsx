@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { Button } from './Button';
-import { Text, TextType } from './Text';
+import { Button } from '../components/Button';
+import { Text, TextType } from '../components/Text';
 
 interface Props {
   navigateToHome: () => void;

@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 
-import { Button } from './Button';
-import { Text, TextType } from './Text';
+import { Button } from '../components/Button';
+import { Text, TextType } from '../components/Text';
 
 interface Props {
   navigateToHome: () => void;
@@ -24,6 +24,7 @@ export const ListExample = memo(function ListExample({
       <Text testID="page_title" type={TextType.BIG}>
         List
       </Text>
+
       <Button
         testID="button_home"
         shouldFocus

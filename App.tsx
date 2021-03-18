@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-import { Button } from './src/Button';
+import { Button } from './src/components/Button';
+import { Text, TextType } from './src/components/Text';
 import { ROUTE } from './src/constants';
-import { FormExample } from './src/FormExample';
-import { ListExample } from './src/ListExample';
-import { Text, TextType } from './src/Text';
+import { FormExample } from './src/form/FormExample';
+import { ListExample } from './src/list/ListExample';
 
 const App = () => {
   const [view, setView] = useState<ROUTE>(ROUTE.HOME);
