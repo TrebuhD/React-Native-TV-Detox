@@ -28,7 +28,8 @@
     },
     "ios": {
       "type": "ios.app",
-      "binaryPath": "SPECIFY_PATH_TO_YOUR_APP_BINARY"
+      "binaryPath": "/Users/xite_trebuh/Projects/TestApp/ios/build/Build/Products/Debug-appletvsimulator/TestApp-tvOS.app",
+      "build": "set -o pipefail && xcodebuild -workspace ios/TestApp.xcworkspace -UseNewBuildSystem=YES -scheme TestApp-tvOS -configuration Release -sdk appletvsimulator14.3 -derivedDataPath ios/build -destination id=17AA8682-48BC-41E7-9BDF-7AE3F80FE66F"
     }
   },
   "configurations": {

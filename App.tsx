@@ -1,22 +1,25 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, Text } from 'react-native';
-
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-const App: () => React$Node = () => {
+import { ListExample } from './src/ListExample';
+
+enum SELECTED_VIEW {
+  NONE,
+  LIST,
+  FORM,
+}
+
+const App = () => {
+  const [selectedView, setSelectedView] = useState();
+
   return (
     <SafeAreaView style={styles.container}>
       <Text testID="stepOne" style={styles.text}>
-        Hello world
+        Hello world!
       </Text>
+
+      <ListExample />
     </SafeAreaView>
   );
 };
@@ -25,7 +28,6 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.dark,
     flex: 1,
-    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
