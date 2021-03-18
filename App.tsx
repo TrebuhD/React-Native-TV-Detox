@@ -2,24 +2,40 @@ import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, Text } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
+import { ROUTE } from './src/constants';
+import { Button } from './src/Button';
+import { FormExample } from './src/FormExample';
 import { ListExample } from './src/ListExample';
 
-enum SELECTED_VIEW {
-  NONE,
-  LIST,
-  FORM,
-}
-
 const App = () => {
-  const [selectedView, setSelectedView] = useState();
+  const [selectedView, setSelectedView] = useState<ROUTE>(ROUTE.HOME);
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text testID="stepOne" style={styles.text}>
-        Hello world!
-      </Text>
+      {selectedView === ROUTE.HOME && (
+        <>
+          <Text testID="stepOne" style={styles.text}>
+            Hello world!
+          </Text>
+          <Button
+            shouldFocus
+            title="Go to List example"
+            onPress={() => setSelectedView(ROUTE.LIST)}
+          />
+          <Button
+            title={'Go to Form example'}
+            onPress={() => setSelectedView(ROUTE.FORM)}
+          />
+        </>
+      )}
 
-      <ListExample />
+      {selectedView === ROUTE.LIST && (
+        <ListExample navigateToHome={() => setSelectedView(ROUTE.HOME)} />
+      )}
+
+      {selectedView === ROUTE.FORM && (
+        <FormExample navigateToHome={() => setSelectedView(ROUTE.HOME)} />
+      )}
     </SafeAreaView>
   );
 };
@@ -34,6 +50,9 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 48,
     color: 'white',
+  },
+  button: {
+    margin: 16,
   },
 });
 
