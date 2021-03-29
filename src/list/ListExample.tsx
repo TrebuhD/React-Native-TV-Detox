@@ -44,6 +44,7 @@ export const ListExample = memo(function ListExample({
 
       <View style={styles.listContainer}>
         <FlatList
+          testID="list"
           style={styles.list}
           data={mockData}
           keyExtractor={(item) => item.id.toString()}

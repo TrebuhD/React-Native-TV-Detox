@@ -24,17 +24,17 @@ export const ListDetails = memo(function ListDetails({ item }: Props) {
   if (!item) {
     return (
       <View style={styles.container}>
-        <Text type={TextType.MEDIUM} dark>
+        <Text type={TextType.MEDIUM} dark testID="empty_list_message">
           {'<--   Select an item in the list'}
         </Text>
       </View>
     );
   }
 
-  const { firstName, lastName, country, email, favPlant, language, id } = item;
+  const { firstName, lastName, country, email, favPlant, language } = item;
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="list_details">
       <Text style={styles.text} dark>
         First name: {firstName}
       </Text>
