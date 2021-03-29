@@ -11,11 +11,11 @@ describe('List screen', () => {
     await element(by.id('button_list')).tap();
   });
 
-  it.skip('should display the page title correctly', async () => {
+  it('should display the page title correctly', async () => {
     await expect(element(by.id('page_title'))).toHaveText('List');
   });
 
-  it.skip('should go back to home screen when home button is pressed', async () => {
+  it('should go back to home screen when home button is pressed', async () => {
     const homeButton = element(by.id('button_home'));
     await expect(homeButton).toExist();
     await homeButton.tap();
@@ -23,7 +23,7 @@ describe('List screen', () => {
     await expect(element(by.text('Hello world!')));
   });
 
-  it.skip('should display user details when list item is selected ', async () => {
+  it('should display user details when list item is selected ', async () => {
     const itemId = 1;
 
     // should display message when nothing is selected
