@@ -28,45 +28,62 @@ describe('List screen', () => {
 
     // should display message when nothing is selected
     const emptyMessage = element(by.id('empty_list_message'));
-    expect(emptyMessage).toHaveText('Select an item in the list');
+    await expect(emptyMessage).toBeVisible();
 
     const listItem = element(by.id(`listItem_${itemId}`));
-    listItem.tap();
+    await listItem.tap();
     // does not display empty message after tapping
-    expect(emptyMessage).not.toExist();
+    await expect(emptyMessage).not.toExist();
 
     // displays user data in details screen
-    const listDetails = element(by.id('list_details'));
-    expect(listDetails).toHaveText(mockData[itemId].firstName);
-    expect(listDetails).toHaveText(mockData[itemId].lastName);
-    expect(listDetails).toHaveText(mockData[itemId].email);
-    expect(listDetails).toHaveText(mockData[itemId].country);
-    expect(listDetails).toHaveText(mockData[itemId].favPlant);
-    expect(listDetails).toHaveText(mockData[itemId].language);
+    await expect(element(by.id('list_details__first_name'))).toHaveText(
+      `First name: ${mockData[itemId].firstName}`
+    );
+    await expect(element(by.id('list_details__last_name'))).toHaveText(
+      `Last name: ${mockData[itemId].lastName}`
+    );
+    await expect(element(by.id('list_details__email'))).toHaveText(
+      `Email: ${mockData[itemId].email}`
+    );
+    await expect(element(by.id('list_details__country'))).toHaveText(
+      `Country: ${mockData[itemId].country}`
+    );
+    await expect(element(by.id('list_details__plant'))).toHaveText(
+      `Favorite plant name: ${mockData[itemId].favPlant}`
+    );
+    await expect(element(by.id('list_details__language'))).toHaveText(
+      `Language: ${mockData[itemId].language}`
+    );
   });
 
-  it('should display user details when a second list item is selected ', async () => {
+  it('should display user details when another item is selected ', async () => {
     const firstItemId = 0;
     const lastItemId = mockData.length - 1;
 
     const firstListItem = element(by.id(`listItem_${firstItemId}`));
-    const listDetails = element(by.id('list_details'));
     const list = element(by.id('list'));
 
     // check first item
-    firstListItem.tap();
-    expect(listDetails).toHaveText(mockData[firstItemId].firstName);
+    await firstListItem.tap();
+    await expect(element(by.id('list_details__first_name'))).toHaveText(
+      `First name: ${mockData[firstItemId].firstName}`
+    );
 
-    // swipe to the end of the list
-    list.swipe('up', 'slow', 1.0);
+    // swipe to the end of the list (need to swipe twice)
+    await list.swipe('up', 'fast', 1.0);
+    await list.swipe('up', 'fast', 0.5);
 
     // check if the last menu item and its details are visible
     const lastListItem = element(by.id(`listItem_${lastItemId}`));
-    expect(lastListItem).toBeVisible();
-    expect(firstListItem).not.toBeVisible();
+    await expect(lastListItem).toBeVisible();
+    await expect(firstListItem).not.toBeVisible();
 
-    lastListItem.tap();
-    expect(listDetails).toHaveText(mockData[lastItemId].firstName);
-    expect(listDetails).toHaveText(mockData[lastItemId].lastName);
+    await lastListItem.tap();
+    await expect(element(by.id('list_details__first_name'))).toHaveText(
+      `First name: ${mockData[lastItemId].firstName}`
+    );
+    await expect(element(by.id('list_details__last_name'))).toHaveText(
+      `Last name: ${mockData[lastItemId].lastName}`
+    );
   });
 });

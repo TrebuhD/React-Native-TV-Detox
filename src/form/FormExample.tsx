@@ -53,6 +53,8 @@ export const FormExample = memo(function FormExample({
 
   const { submitForm, error, success, loading } = useForm({ email, password });
 
+  const submitDisabled = !email || !password;
+
   return (
     <>
       <View style={styles.container}>
@@ -72,7 +74,7 @@ export const FormExample = memo(function FormExample({
 
           <Text type={TextType.MEDIUM}>password</Text>
           <Input
-            testID="email_input"
+            testID="password_input"
             secureTextEntry={true}
             autoCompleteType="password"
             textContentType="password"
@@ -80,24 +82,32 @@ export const FormExample = memo(function FormExample({
             onChange={(value) => setPassword(value.nativeEvent.text)}
           />
 
-          {error && <Text style={styles.errorText}>{error}</Text>}
+          {error && (
+            <Text testID="error_text" style={styles.errorText}>
+              {error}
+            </Text>
+          )}
 
-          {success && <Text style={styles.successText}>Success! 🎉</Text>}
+          {success && (
+            <Text testID="success_text" style={styles.successText}>
+              Success! 🎉
+            </Text>
+          )}
 
           <Button
-            testID="submit_form_button"
+            testID={
+              submitDisabled
+                ? 'button_submit_form--disabled'
+                : 'button_submit_form'
+            }
             shouldFocus
             title="Submit"
             onPress={submitForm}
+            disabled={submitDisabled}
           />
         </View>
 
-        <Button
-          testID="home_button"
-          shouldFocus
-          title="Home"
-          onPress={navigateToHome}
-        />
+        <Button testID="button_home" title="Home" onPress={navigateToHome} />
       </View>
 
       {loading && (

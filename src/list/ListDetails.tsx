@@ -35,22 +35,22 @@ export const ListDetails = memo(function ListDetails({ item }: Props) {
 
   return (
     <View style={styles.container} testID="list_details">
-      <Text style={styles.text} dark>
+      <Text testID="list_details__first_name" style={styles.text} dark>
         First name: {firstName}
       </Text>
-      <Text style={styles.text} dark>
+      <Text testID="list_details__last_name" style={styles.text} dark>
         Last name: {lastName}
       </Text>
-      <Text style={styles.text} dark>
+      <Text testID="list_details__country" style={styles.text} dark>
         Country: {country}
       </Text>
-      <Text style={styles.text} dark>
+      <Text testID="list_details__language" style={styles.text} dark>
         Language: {language}
       </Text>
-      <Text style={styles.text} dark>
+      <Text testID="list_details__email" style={styles.text} dark>
         Email: {email}
       </Text>
-      <Text style={styles.text} dark>
+      <Text testID="list_details__plant" style={styles.text} dark>
         Favorite plant name: {favPlant}
       </Text>
     </View>

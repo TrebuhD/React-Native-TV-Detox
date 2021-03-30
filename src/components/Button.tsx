@@ -9,6 +9,7 @@ interface Props {
   onPress: () => void;
   shouldFocus?: boolean;
   testID?: string;
+  disabled?: boolean;
 }
 
 const styles = StyleSheet.create({
@@ -27,11 +28,18 @@ const styles = StyleSheet.create({
     opacity: 1,
     borderColor: 'white',
   },
+  disabled: {
+    backgroundColor: 'grey',
+    borderColor: 'grey',
+  },
   text: {
     color: 'black',
   },
   focusedText: {
     fontWeight: 'bold',
+  },
+  disabledText: {
+    color: '#aaaaaa',
   },
 });
 
@@ -39,22 +47,39 @@ export const Button = memo(function Button({
   title,
   onPress,
   shouldFocus,
+  disabled,
   testID,
 }: Props) {
   const [focused, setFocused] = useState(false);
 
   return (
     <TouchableOpacity
-      style={[styles.container, focused && styles.focusedContainer]}
-      onPress={onPress}
+      style={[
+        styles.container,
+        focused && styles.focusedContainer,
+        disabled && styles.disabled,
+      ]}
+      onPress={() => {
+        if (disabled) {
+          return;
+        }
+        onPress();
+      }}
       activeOpacity={1}
+      disabled={disabled}
       hasTVPreferredFocus={shouldFocus}
       onFocus={() => setFocused(true)}
       onBlur={() => setFocused(false)}
       testID={testID}
     >
       <View>
-        <Text style={[styles.text, focused && styles.focusedText]}>
+        <Text
+          style={[
+            styles.text,
+            focused && styles.focusedText,
+            disabled && styles.disabledText,
+          ]}
+        >
           {title}
         </Text>
       </View>
