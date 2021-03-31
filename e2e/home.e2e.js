@@ -4,7 +4,7 @@ describe('Home screen', () => {
   });
 
   beforeEach(async () => {
-    // await device.reloadReactNative();
+    await device.reloadReactNative();
   });
 
   it('should say hello world - by ID', async () => {
