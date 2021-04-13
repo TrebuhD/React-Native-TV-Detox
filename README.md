@@ -2,6 +2,8 @@
 
 This repository contains an example of how to setup & run Detox end to end tests inside a TV app build with `react-native-tvos`.
 
+You can find the tests inside the `e2e` folder.
+
 There are 2 example screens within it, one containing a simple selectable list & details screen, and the other containing a form with a simulated network call.
 
 **Disclaimer: this example only works with Android TV at the moment. Apple tvOS instructions will be added once Detox/EarlGray supports it.**
@@ -44,3 +46,8 @@ For this step you need to create a test build first.
 
 1. Run `yarn start` to start the React Native metro server (if it's not already running).
 2. Run `yarn e2eTestAndroid` to start up the emulator and run the tests.
+
+## Screenshots:
+
+![Form example](https://github.com/TrebuhD/React-Native-TV-Detox/blob/master/assets/formExample.png?raw=true)
+![List example](https://github.com/TrebuhD/React-Native-TV-Detox/blob/master/assets/listExample.png?raw=true)
