@@ -1,6 +1,10 @@
 # Running Detox tests inside a React Native TV environment
 
-Disclaimer: this example only works with Android TV at the moment. Apple tvOS instructions will be added once Detox/EarlGray supports it.
+This repository contains an example of how to setup & run Detox end to end tests inside a TV app build with `react-native-tvos`.
+
+There are 2 example screens within it, one containing a simple selectable list & details screen, and the other containing a form with a simulated network call.
+
+**Disclaimer: this example only works with Android TV at the moment. Apple tvOS instructions will be added once Detox/EarlGray supports it.**
 
 ## Prerequisites
 
@@ -27,7 +31,7 @@ Disclaimer: this example only works with Android TV at the moment. Apple tvOS in
 ## Running the app in normal mode (without tests)
 
 1. Start your emulator in Android Studio. Make sure you don't have any other connected Android devices.
-2. Run `yarn android` in the project root.
+2. Run `yarn android` in the project root. It should build the app and start the React Native metro packager in another terminal window.
 3. The app should start inside the emulator. You can navigate using the arrow keys on your keyboard.
 
 ## Building this project
