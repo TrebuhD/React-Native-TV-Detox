@@ -1,14 +1,21 @@
 {
-  "name": "testapp",
-  "version": "0.0.1",
-  "private": true,
+  "name": "react-native-tvos-detox",
+  "version": "1.0.0",
+  "private": false,
+  "license": "MIT",
+  "author": {
+    "name": "Hubert Dworczyński",
+    "email": "hubert.dworczynski@gmail.com"
+  },
   "scripts": {
     "android": "react-native run-android",
     "tvos": "react-native run-ios --simulator \"Apple TV\" --scheme \"TestApp-tvOS\"",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "e2eBuildAndroid": "yarn detox build --configuration android.emu.debug",
+    "e2eTestAndroid": "yarn detox test --configuration android.emu.debug"
   },
   "dependencies": {
     "react": "16.13.1",
